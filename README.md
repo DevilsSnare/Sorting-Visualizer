@@ -18,6 +18,14 @@ To run Sort.exe you must download SDL2.dll and Sort.exe to your local computer, 
 How to open the project?
 To open the project file, you must download SDL2 from https://www.libsdl.org/download-2.0.php and then configure your IDE accordingly.
 
+Heap Sort
+
+![](heapsort.gif)
+
+Merge Sort
+
+![](mergesort.gif)
+
 Bubble Sort
 
 ![](bubblesort.gif)
