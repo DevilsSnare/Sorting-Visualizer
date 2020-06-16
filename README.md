@@ -20,3 +20,5 @@ To open the project file, you must download SDL2 from https://www.libsdl.org/dow
 
 Bubble Sort
 
+![](bubblesort.gif)
+
