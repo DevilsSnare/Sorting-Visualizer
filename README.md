@@ -1,7 +1,7 @@
 # Sorting-Visualizer
 Sorting Visualizer written in C++ using the SDL2 library. The program generates random array of numbers and also prints the time taken to sort the array.
 
-**Algorithms included:        Average Time Complexity**
+**Algorithms included:**
 1. Bubble Sort              θ(n^2)
 2. Insertion Sort           θ(n^2)
 3. Selection Sort           θ(n^2)
@@ -12,10 +12,10 @@ Sorting Visualizer written in C++ using the SDL2 library. The program generates 
 
 This program is written using the Visual Studio 2019, and all the project files are included in the 'Sort' folder.
 
-How to run the executable?
+***How to run the executable?***
 To run Sort.exe you must download SDL2.dll and Sort.exe to your local computer, make sure both files are in the same folder.
 
-How to open the project?
+***How to open the project?***
 To open the project file, you must download SDL2 from https://www.libsdl.org/download-2.0.php and then configure your IDE accordingly.
 
 **Heap Sort**
