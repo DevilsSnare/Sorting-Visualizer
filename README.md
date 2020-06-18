@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 
 
@@ -1238,4 +1239,32 @@ To open the project file, you must download SDL2 from <a href="https://www.libsd
 
   </body>
 </html>
+=======
+**Algorithms included:**
+1. Bubble Sort              θ(n^2)
+2. Insertion Sort           θ(n^2)
+3. Selection Sort           θ(n^2)
+4. Quick Sort               θ(n log(n))
+5. Merge Sort               θ(n log(n))
+6. Heap Sort                θ(n log(n))
+
+
+***How to run the executable?***
+To run Sort.exe you must download SDL2.dll and Sort.exe to your local computer, make sure both files are in the same folder.
+
+***How to open the project?***
+To open the project file, you must download SDL2 from https://www.libsdl.org/download-2.0.php and then configure your IDE accordingly. This program is written using the Visual Studio 2019, and all the project files are included in the 'Sort' folder.
+
+**Heap Sort**
+
+![](heapsort.gif)
+
+**Merge Sort**
+
+![](mergesort.gif)
+
+**Bubble Sort**
+
+![](bubblesort.gif)
+>>>>>>> 5cf6b2ed904f9eabdb70293833ce402c37b3c502
 
