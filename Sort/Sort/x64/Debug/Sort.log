@@ -1,2 +1,3 @@
 ﻿  Sort.cpp
-  Sort.vcxproj -> C:\Users\cheta\Desktop\SortingVisulization\Sort\x64\Debug\Sort.exe
+C:\Users\cheta\Documents\Programming\Sorting-Visualizer\Sort\Sort\Sort.cpp(298,8): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  Sort.vcxproj -> C:\Users\cheta\Documents\Programming\Sorting-Visualizer\Sort\x64\Debug\Sort.exe

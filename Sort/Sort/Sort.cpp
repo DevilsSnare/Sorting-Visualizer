@@ -1,9 +1,10 @@
-#include <SDL.h>
+﻿#include <SDL.h>
 #include <iostream>
 #include <string>
 #include <time.h>
 #include <limits>
-#define ll long long
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 const int SCREEN_WIDTH = 1024;
@@ -46,20 +47,12 @@ void visualize(int x = 0, int y = 0, int z = 0)
 		}
 		else
 		{
-			SDL_SetRenderDrawColor(renderer, 170, 183, 184, 0);
+			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
 			SDL_RenderDrawRect(renderer, &rect);
 		}
 		i++;
 	}
 	SDL_RenderPresent(renderer);
-}
-void close()
-{
-	SDL_DestroyRenderer(renderer);
-	renderer = NULL;
-	SDL_DestroyWindow(window);
-	window = NULL;
-	SDL_Quit();
 }
 void bubblesort()
 {
@@ -168,14 +161,13 @@ void quicksort(int a[], int b, int c)
 	quicksort(a, b, d - 1);
 	quicksort(a, d + 1, c);
 }
-void xmergesort(int a[], int si, int ei)
+void xmergesort(int a[], int b, int c)
 {
-	int size_output = (ei - si) + 1;
-	int* output = new int[size_output];
-
-	int mid = (si + ei) / 2;
-	int i = si, j = mid + 1, k = 0;
-	while (i <= mid && j <= ei)
+	int size = (c - b) + 1;
+	vector<int> output(size);
+	int mid = (b + c) / 2;
+	int i = b, j = mid + 1, k = 0;
+	while (i <= mid && j <= c)
 	{
 		if (a[i] <= a[j])
 		{
@@ -200,7 +192,7 @@ void xmergesort(int a[], int si, int ei)
 		i++;
 		k++;
 	}
-	while (j <= ei)
+	while (j <= c)
 	{
 		output[k] = a[j];
 		visualize(-1, j);
@@ -208,14 +200,13 @@ void xmergesort(int a[], int si, int ei)
 		k++;
 	}
 	int x = 0;
-	for (int l = si; l <= ei; l++)
+	for (int l = b; l <= c; l++)
 	{
 		a[l] = output[x];
 		visualize(l);
 		SDL_Delay(2);
 		x++;
 	}
-	delete[]output;
 }
 void mergesort(int a[], int b, int c)
 {
@@ -303,7 +294,7 @@ void load()
 }
 void generaterandomarray()
 {
-	unsigned int seed = (unsigned)time(NULL);
+	long long int seed = (long long)time(NULL);
 	srand(seed);
 	for (int i = 0;i < arrsize;i++)
 	{
@@ -357,7 +348,7 @@ void program()
 						iscomplete = false;
 						cout << "\nExiting\n";
 						break;
-					case(SDLK_0):
+					case(SDLK_n):
 						generaterandomarray();
 						iscomplete = false;
 						load();
@@ -374,7 +365,7 @@ void program()
 						bubblesort();
 						iscomplete = true;
 						cout << "\nBubble Sort successfully completed\n";
-						duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+						duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 						cout << "Time Taken: " << duration << " seconds\n";
 						break;
 					}
@@ -389,7 +380,7 @@ void program()
 						insertionsort();
 						iscomplete = true;
 						cout << "\nInsertion Sort successfully completed\n";
-						duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+						duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 						cout << "Time Taken: " << duration << " seconds\n";
 						break;
 					}
@@ -404,7 +395,7 @@ void program()
 						selectionsort();
 						iscomplete = true;
 						cout << "\nSelection Sort successfully completed\n";
-						duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+						duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 						cout << "Time Taken: " << duration << " seconds\n";
 						break;
 					}
@@ -419,7 +410,7 @@ void program()
 						quicksort(arr, 0, arrsize - 1);
 						iscomplete = true;
 						cout << "\nQuick Sort successfully completed\n";
-						duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+						duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 						cout << "Time Taken: " << duration << " seconds\n";
 						break;
 					}
@@ -434,7 +425,7 @@ void program()
 						mergesort(arr, 0, arrsize - 1);
 						iscomplete = true;
 						cout << "\nMerge Sort successfully completed\n";
-						duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+						duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 						cout << "Time Taken: " << duration << " seconds\n";
 						break;
 					}
@@ -449,29 +440,37 @@ void program()
 						heapsort(arr, arrsize);
 						iscomplete = true;
 						cout << "\nHeap Sort successfully completed\n";
-						duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+						duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 						cout << "Time Taken: " << duration << " seconds\n";
 						break;
 					}
-					case(SDLK_7):
-						close();
+					case(SDLK_x):
+						SDL_DestroyRenderer(renderer);
+						renderer = NULL;
+						SDL_DestroyWindow(window);
+						window = NULL;
+						SDL_Quit();
 						return;
 					}
 				}
 			}
 			visualize();
 		}
-		close();
+		SDL_DestroyRenderer(renderer);
+		renderer = NULL;
+		SDL_DestroyWindow(window);
+		window = NULL;
+		SDL_Quit();
 	}
 }
 void start1()
 {
 	cout << "\n";
-	cout << "    ******SORTING VISUALIZER*****\n";
-	cout << "   _______________________________\n";
+	cout << "      ----SORTING VISUALIZER----\n";
+	cout << "   ________________________________\n";
 	cout << "Written in C++ using the SDL2 library\n";
-	cout << "                 -                   \n";
-	cout << "\n    **Press Enter to continue**\n";
+	cout << "                  -                   \n";
+	cout << "\n     **Press Enter to continue**\n";
 	string command;
 	getline(cin, command);
 	if (command == "\n")
@@ -481,19 +480,19 @@ void start1()
 }
 void start2()
 {
-	cout << "   _______________________________\n";
+	cout << "   ________________________________\n";
 	cout << "\nPlease follow the instructions given below:\n";
-	cout << "Press 0 to generate random array of numbers\n";
-	cout << "Press 1 to sort using Bubble Sort algorithm\n";
-	cout << "Press 2 to sort using Insertion Sort algorithm\n";
-	cout << "Press 3 to sort using Selection Sort algorithm\n";
-	cout << "Press 4 to sort using Quick Sort algorithm\n";
-	cout << "Press 5 to sort using Merge Sort algorithm\n";
-	cout << "Press 6 to sort using Heap Sort algorithm\n";
-	cout << "Press 7 to exit\n";
-	cout << "   _______________________________\n";
+	cout << "Press N to generate random array of numbers\n";
+	cout << "Press 1 to sort using BUBBLE SORT algorithm\n";
+	cout << "Press 2 to sort using INSERTION SORT algorithm\n";
+	cout << "Press 3 to sort using SELECTION SORT algorithm\n";
+	cout << "Press 4 to sort using QUICK SORT algorithm\n";
+	cout << "Press 5 to sort using MERGE SORT algorithm\n";
+	cout << "Press 6 to sort using HEAP SORT algorithm\n";
+	cout << "Press X to exit\n";
+	cout << "   ________________________________\n";
 	cout << "\nNOTE: Give one command at a time.\n";
-	cout << "\n    **Press Enter to continue**\n";
+	cout << "\n     **Press Enter to continue**\n";
 	string command;
 	getline(cin, command);
 	if (command == "\n")
@@ -506,9 +505,8 @@ int main(int argc, char* args[])
 	start1();
 	start2();
 	program();
-	cout << "\n**Hope you liked it**\n";
 	clock_t start_time = clock();
-	while (clock() < start_time + 3000)
+	while (clock() < start_time + 1000)
 		;
 
 	return 0;
