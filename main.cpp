@@ -1,5 +1,6 @@
 #include <SDL.h>
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 #include <time.h>
 #include <limits>
 #define ll long long
